@@ -49,12 +49,12 @@ class _SplashState extends State<Splash> {
     await Future.delayed(Duration(seconds: 2));
     if(LocalStorage.userExist()){
       if(LocalStorage.userData().isAdmin == true){
-        Get.offAndToNamed(Routes.adminHome);
+        Get.offNamedUntil(Routes.adminHome , (route) => false);
       }else{
-        Get.offAndToNamed(Routes.home);
+        Get.offNamedUntil(Routes.home , (route) => false);
       }
     }else{
-      Get.offAndToNamed(Routes.login);
+      Get.offNamedUntil(Routes.login, (route) => false);
     }
   }
 

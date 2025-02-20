@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:skill_test/main.dart';
+import 'package:skill_test/route/routes.dart';
 import 'package:skill_test/test_module/web_player.dart';
 
 class TestPage extends StatefulWidget {
@@ -12,11 +15,17 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Test Screen")),
+      appBar: AppBar(title: Text("Test Screen"),
+
+      actions: [
+        OutlinedButton(onPressed: (){
+          Get.offNamedUntil( Routes.splash, (route) => false);
+        }, child: Text('Complete Test'))
+      ],),
       body: Center(
           child: Stack(
             children: [
-              WebVideoPlayer(videoUrl: 'https://firebasestorage.googleapis.com/v0/b/app1-926c8.appspot.com/o/game.mp4?alt=media&token=78efcfe1-2766-42a5-b709-d426f5b5589b'),
+              WebVideoPlayer(),
               Positioned.fill(
                 child: AbsorbPointer(
                   absorbing: true,

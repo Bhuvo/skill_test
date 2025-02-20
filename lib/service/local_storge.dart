@@ -5,6 +5,7 @@ import 'package:skill_test/model/user_model.dart';
 
 class LocalStorage {
   static String user = 'user';
+  static String testData = 'testData';
   static SharedPreferences ?_sharedPreferences;
 
   static Future<void> init() async {
@@ -27,6 +28,13 @@ class LocalStorage {
 
   static String getString(String key) {
     return _sharedPreferences?.getString(key) ?? '';
+  }
+  static setInt(String key, int value) async {
+     _sharedPreferences?.setInt(key, value);
+  }
+
+  static int getInt(String key) {
+    return _sharedPreferences?.getInt(key) ?? 0;
   }
 
   static clear() {

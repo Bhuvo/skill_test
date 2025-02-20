@@ -58,9 +58,9 @@ class _CandidateHomeState extends State<CandidateHome> {
                 ),
               ),
               SizedBox(height: 20,),
-              OutlinedButton(onPressed:(){
+             LocalStorage.getInt('total') ==0 ? OutlinedButton(onPressed:(){
                 Get.offNamedUntil(Routes.testPage, (route) => false);
-              }, child: const Text('Start Test'))
+              }, child: const Text('Start Test')) : Text('Your Score : ${LocalStorage.getInt('total')} Points',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ,color: Colors.green),),
             ],
           ),
         ),)
