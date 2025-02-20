@@ -6,12 +6,16 @@ import '../../model/test_model.dart';
 class AdminHomeController extends GetxController{
   List<String> data =[];
 
+  RxBool isLoading = false.obs;
+
   Future<void> getTest()async{
+    isLoading.value = true;
     final result = await FirebaseFirestore.instance.collection('test').get();
     if(result.docs.isNotEmpty){
       data = result.docs.map((e) => TestModel.fromJson(e.data()).toString()).toList();
     }
     print('the length is ${data.length}');
+    isLoading.value = false;
   }
 
   Future<void> assignTest(String name ,String mobile ,String password ,String testName)async{

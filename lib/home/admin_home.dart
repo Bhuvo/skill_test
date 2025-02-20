@@ -38,45 +38,46 @@ class _AdminHomeState extends State<AdminHome> {
           Get.offAllNamed(Routes.login);
         }, child: const Text('Logout'))],
       ),
-      body: Padding(
-        padding: context.padding,
-        child: Column(
-          children: [
-            Row(),
-            Text('Assign Candidates',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            SizedBox(height: 20,),
-            TextFormField(
-              controller: nameController,
-              decoration: InputDecoration(
-                label: Text('Candidate Name'),
-                border: OutlineInputBorder(),
+      body:Obx(()=>controller.isLoading.value ? Center(child: CircularProgressIndicator(),) : Padding(
+          padding: context.padding,
+          child: Column(
+            children: [
+              Row(),
+              Text('Assign Candidates',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              SizedBox(height: 20,),
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  label: Text('Candidate Name'),
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20,),
-            TextFormField(
-              controller: mobileController,
-              decoration: InputDecoration(
-                label: Text('Candidate mobile'),
-                border: OutlineInputBorder(),
+              SizedBox(height: 20,),
+              TextFormField(
+                controller: mobileController,
+                decoration: InputDecoration(
+                  label: Text('Candidate mobile'),
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20,),
-            TextFormField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                label: Text('Candidate password'),
-                border: OutlineInputBorder(),
+              SizedBox(height: 20,),
+              TextFormField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  label: Text('Candidate password'),
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20,),
-            MDropDown(items: controller.data ,onItemChanged: (value){testName = value;},),
-            SizedBox(height: 20,),
-            OutlinedButton(onPressed: (){
-              controller.assignTest(nameController.text,mobileController.text, passwordController.text, testName);
-              mobileController.clear();
-              passwordController.clear();
-              }, child: Text('Assign'))
-          ],
+              SizedBox(height: 20,),
+              MDropDown(items: controller.data ,onItemChanged: (value){testName = value;},),
+              SizedBox(height: 20,),
+              OutlinedButton(onPressed: (){
+                controller.assignTest(nameController.text,mobileController.text, passwordController.text, testName);
+                mobileController.clear();
+                passwordController.clear();
+                }, child: Text('Assign'))
+            ],
+          ),
         ),
       ),
     );

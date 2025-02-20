@@ -38,8 +38,9 @@ dependencies:
   chewie:
   firebase_core: ^3.11.0
   cloud_firestore: ^5.6.3
-  get: ^4.7.2
-  shared_preferences: 
+  get: ^4.7.2  
+
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
